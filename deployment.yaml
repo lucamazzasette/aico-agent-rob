@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aicoagent-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: aicoagent
+  template:
+    metadata:
+      labels:
+        app: aicoagent
+    spec:
+      containers:
+      - name: aicoagent
+        image: gcr.io/PROJECT_ID/IMAGE:TAG
+        ports:
+        - containerPort: 3000
+        env:
+        - name: NODE_ENV
+          value: "production"
+        - name: GOOGLE_CLIENT_ID
+          value: "$(GOOGLE_CLIENT_ID)"
+        - name: GOOGLE_CLIENT_SECRET
+          value: "$(GOOGLE_CLIENT_SECRET)"
+        - name: AZURE_AD_CLIENT_ID
+          value: "$(AZURE_AD_CLIENT_ID)"
+        - name: AZURE_AD_CLIENT_SECRET
+          value: "$(AZURE_AD_CLIENT_SECRET)"
