@@ -5,7 +5,7 @@ import { SendHorizontal, Book, Code, NotebookText, User } from "lucide-react";
 import { useAppContext } from "../context/context";
 import GroundingChunksList from "./GroundingChunksList";
 import { useTheme } from "next-themes";
-import { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 export default function Main() {
   const {
@@ -26,23 +26,27 @@ export default function Main() {
       <div className="flex items-center justify-between text-2xl bg-white dark:bg-gray-800 border-b-2 border-gray-400 dark:border-gray-300">
         {
           theme === "light" ? (
-            <><Image className="ml-[10%]" src="/aico-agent.png" alt="Logo" width={180} height={90} />
-                <div className="row-span-3 text-left mr-[35%]">
-                 <span style={{ fontWeight: 'bold', fontSize: '30px' }}>
+            <>
+              <Image className="ml-[10%]" src="/aico-agent.png" alt="Logo" width={180} height={90} />
+              <div className="row-span-3 text-left mr-[35%]">
+                <span style={{ fontWeight: 'bold', fontSize: '30px' }}>
                  LEAN MANAGEMENT
-                 </span>
-                 <span className="flex flex-col" style={{ fontSize: '20px'}}>AFTER SALES ROBOTICS</span>
-                </div>    
-            <Image className="mr-[10%]" src="/logo-blue.png" alt="Logo" width={90} height={90} /></>
+                </span>
+                <span className="flex flex-col" style={{ fontSize: '20px'}}>AFTER SALES ROBOTICS</span>
+              </div>    
+              <Image className="mr-[10%]" src="/logo-blue.png" alt="Logo" width={90} height={90} />
+            </>
           ) : (
-            <><Image className="ml-[10%]" src="/aico-agent-blk.png" alt="Logo" width={180} height={90} />
-            <div className="row-span-3 text-left mr-[35%] text-white">
-                 <span style={{ fontWeight: 'bold', fontSize: '30px' }}>
+            <>
+              <Image className="ml-[10%]" src="/aico-agent-blk.png" alt="Logo" width={180} height={90} />
+              <div className="row-span-3 text-left mr-[35%] text-white">
+                <span style={{ fontWeight: 'bold', fontSize: '30px' }}>
                  LEAN MANAGEMENT
-                 </span>
-                 <span className="flex flex-col" style={{ fontSize: '20px'}}>AFTER SALES ROBOTICS</span>
-                 </div>
-            <Image className="mr-[10%]" src="/logo-white.png" alt="Logo" width={90} height={90} /></>
+                </span>
+                <span className="flex flex-col" style={{ fontSize: '20px'}}>AFTER SALES ROBOTICS</span>
+              </div>
+              <Image className="mr-[10%]" src="/logo-white.png" alt="Logo" width={90} height={90} />
+            </>
           )
         }
         
@@ -51,7 +55,6 @@ export default function Main() {
         {!showResult ? (
           <>
             <div className="my-12 text-4xl text-gray-400 dark:text-gray-500 font-light p-5">
-              {/* <p><span className="bg-gradient-to-r from-blue-500 to-blue-500 bg-clip-text text-transparent">Hello, AICO Agent</span></p> */}
               <p>How can I help you today?</p>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-5 p-5">
@@ -92,29 +95,29 @@ export default function Main() {
         )}
         
         <div className="absolute bottom-0 w-full max-w-[700px] pt-10 mt-5">
-  <div className="flex items-start justify-between gap-5 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 p-7 rounded-3xl">
-    <textarea
-      ref={inputRef}
-      onChange={(e) => setInput(e.target.value)}
-      value={input}
-      placeholder="Input the robot model here for search"
-      onKeyDown={(e) => {
-        if (e.key === "Enter" && !e.shiftKey) {
-          e.preventDefault();
-          chatWithVertex();
-        }
-      }}
-      className="flex-1 bg-transparent border-none outline-none text-base text-gray-800 dark:text-gray-200 resize-none max-h-32 overflow-auto"
-    />
-    <div className="self-end">
-      <SendHorizontal onClick={() => chatWithVertex()} className="cursor-pointer text-gray-600 dark:text-gray-400" />
-    </div>
-  </div>
-  <p className="text-sm mt-4 text-center text-gray-600 dark:text-gray-400">
-    COMAU AICO generated content may be inaccurate. <a target="_blank" href="https://drive.google.com/file/d/1OXkt4Z9hVoy4rXGFBOhzR9e0LJers5fJ/view" className="text-blue-500 underline">Refered Policy</a>.
-  </p>
-</div>
+          <div className="flex items-start justify-between gap-5 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 p-7 rounded-3xl">
+            <textarea
+              ref={inputRef}
+              onChange={(e) => setInput(e.target.value)}
+              value={input}
+              placeholder="Input the robot model here for search"
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && !e.shiftKey) {
+                  e.preventDefault();
+                  chatWithVertex();
+                }
+              }}
+              className="flex-1 bg-transparent border-none outline-none text-base text-gray-800 dark:text-gray-200 resize-none max-h-32 overflow-auto"
+            />
+            <div className="self-end">
+              <SendHorizontal onClick={() => chatWithVertex()} className="cursor-pointer text-gray-600 dark:text-gray-400" />
+            </div>
+          </div>
+          <p className="text-sm mt-4 text-center text-gray-600 dark:text-gray-400">
+            COMAU AICO generated content may be inaccurate. <a target="_blank" href="https://drive.google.com/file/d/1OXkt4Z9hVoy4rXGFBOhzR9e0LJers5fJ/view" className="text-blue-500 underline">Refered Policy</a>.
+          </p>
         </div>
+      </div>
     </div>
   );
 }
