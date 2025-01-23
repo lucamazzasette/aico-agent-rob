@@ -19,7 +19,7 @@ export default function Main() {
     result
   } = useAppContext();
   const { theme } = useTheme();
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLTextAreaElement>(null);
 
   return (
     <div className="flex-1 min-h-screen bg-white dark:bg-gray-900 pb-[15vh] relative border-blue-500 dark:border-gray-300">
@@ -63,7 +63,7 @@ export default function Main() {
                 { name: "Document Summary Prompt", icon: Book, text: "Summarize the following document:" },
                 { name: "Code Suggestion", icon: Code, text: "Write JavaScript code for following requirement:" },
               ].map((item, index) => (
-                <div key={index} onClick={() => {setInput(item.text +" "); inputRef.current?.focus()}} className="h-[150px] p-4 bg-gray-200 dark:bg-gray-700 rounded-lg relative cursor-pointer hover:bg-gray-300 dark:hover:bg-gray-600">
+                <div key={index} onClick={() => {setInput(item.text + " "); inputRef.current?.focus()}} className="h-[150px] p-4 bg-gray-200 dark:bg-gray-700 rounded-lg relative cursor-pointer hover:bg-gray-300 dark:hover:bg-gray-600">
                   <p className="text-gray-800 dark:text-gray-200">{item.name}</p>
                   <item.icon className="absolute bottom-2 right-2 p-1 dark:bg-gray-300 rounded-full" />
                 </div>
@@ -86,7 +86,7 @@ export default function Main() {
                 </div>
               ) : (
                 <div className="flex flex-col gap-5">
-                  <p className="text-gray-800 dark:text-gray-200" dangerouslySetInnerHTML={{__html: result}}></p>
+                  <p className="text-gray-800 dark:text-gray-200" dangerouslySetInnerHTML={{ __html: result }}></p>
                   <GroundingChunksList groundingChunks={groundingChunks} />
                 </div>
               )}
