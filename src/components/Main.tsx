@@ -30,7 +30,7 @@ export default function Main() {
               <Image className="ml-[10%]" src="/aico-agent.png" alt="Logo" width={180} height={90} />
               <div className="row-span-3 text-left mr-[35%]">
                 <span style={{ fontWeight: 'bold', fontSize: '30px' }}>
-                 LEAN MANAGEMENT
+                 KNOWLEDGE BASE
                 </span>
                 <span className="flex flex-col" style={{ fontSize: '20px'}}>AFTER SALES ROBOTICS</span>
               </div>    
@@ -41,7 +41,7 @@ export default function Main() {
               <Image className="ml-[10%]" src="/aico-agent-blk.png" alt="Logo" width={180} height={90} />
               <div className="row-span-3 text-left mr-[35%] text-white">
                 <span style={{ fontWeight: 'bold', fontSize: '30px' }}>
-                 LEAN MANAGEMENT
+                 KNOWLEDGE BASE
                 </span>
                 <span className="flex flex-col" style={{ fontSize: '20px'}}>AFTER SALES ROBOTICS</span>
               </div>
